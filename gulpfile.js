@@ -28,22 +28,21 @@ var pack = function (cfg, cb){
     })
 }
 
+var buildConf = {
+    entry: {
+        'react-hi-text': [
+            './index.js'
+        ]
+    },
+    output: {
+        path: 'dist',
+        library: 'ReactHiText',
+        libraryTarget: 'umd'
+    },
+}
 gu
     .task('dev', function (){
-        pack({
-            entry: {
-                'react-hi-text': [
-                    './index.js'
-                ]
-            },
-
-            output: {
-                path: 'dist',
-                library: 'ReactHiText',
-                libraryTarget: 'umd'
-            },
-            watch: true
-        })
+        pack(_.merge(buildConf, {watch: true}))
     })
     .task('test', function (){
         pack({
@@ -59,18 +58,7 @@ gu
         })
     })
     .task('build', function (){
-        pack({
-            entry: {
-                'react-hi-text': [
-                    './index.js'
-                ]
-            },
-            output: {
-                path: 'dist',
-                library: 'ReactHiText',
-                libraryTarget: 'umd'
-            },
-        }, function (){
+        pack(buildConf, function (){
             gu.src('dist/react-hi-text.js')
                 .pipe(uglify())
                 .pipe(rename({
