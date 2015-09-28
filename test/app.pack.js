@@ -117,13 +117,7 @@
 	                null,
 	                'With Async'
 	            ),
-	            React.createElement(HiText, { ref: 'hi3', text: html, hi: this.state.async }),
-	            React.createElement(
-	                'h2',
-	                null,
-	                'With Async'
-	            ),
-	            React.createElement(HiText, { ref: 'hi4', text: text, hi: 'h' })
+	            React.createElement(HiText, { ref: 'hi3', text: html, hi: this.state.async })
 	        );
 	    }
 	});

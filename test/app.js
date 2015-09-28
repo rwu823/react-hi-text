@@ -45,8 +45,6 @@ var App = React.createClass({
                 <HiText ref="hi2" text={html} hi={this.state.hi1} case-sensitive />
                 <h2>With Async</h2>
                 <HiText ref="hi3" text={html} hi={this.state.async} />
-                <h2>With Async</h2>
-                <HiText ref="hi4" text={text} hi={'h'} />
             </div>
         )
     }
