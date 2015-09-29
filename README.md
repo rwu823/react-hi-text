@@ -25,7 +25,9 @@ var App  = React.createClass({
 	render(){
 		return (
 			<div id="app">
-				<HiText text="Hello highlight text" hi="h" />
+				<HiText hi="h">
+					Hello highlight text
+				</HiText>
 			</div>
 		)
 	}
@@ -36,7 +38,7 @@ React.render(<App/>, document.body)
 output:
 ```html
 <div id="app">
-	<span class="highlight">H</span>ello <span class="highlight">h</span>ig<span class="highlight">h</span>lig<span class="highlight">h</span>t text!!!!
+	<span class="highlight">H</span>ello <span class="highlight">h</span>ig<span class="highlight">h</span>lig<span class="highlight">h</span>t text
 </div>
 ```
 
@@ -48,9 +50,6 @@ Set highlight with a word.
 ### case-sensitive
 Match word with case sensitive. default is `false`
 
-
-### text
-set text node.
 
 ### className
 set class name. default  is `highlight`

@@ -88,7 +88,7 @@
 	        }, 2000);
 	    },
 	    render: function render() {
-	        var html = '\n            <h1>JavaScript</h1> (/ˈdʒɑːvəˌskrɪpt/[5]) is a high level, dynamic, untyped, and interpreted programming language.[6]\n            It has been standardized in the ECMAScript language specification.\n        ';
+	        var html = '\n            JavaScript (/ˈdʒɑːvəˌskrɪpt/[5]) is a high level, dynamic, untyped, and interpreted programming language.[6]\n            It has been standardized in the ECMAScript language specification.\n        ';
 
 	        var text = 'Hello highlight text!!!!';
 
@@ -105,19 +105,31 @@
 	                null,
 	                'basic'
 	            ),
-	            React.createElement(HiText, { ref: 'hi1', text: html, hi: this.state.hi1 }),
+	            React.createElement(
+	                HiText,
+	                { ref: 'hi1', hi: this.state.hi1 },
+	                html
+	            ),
 	            React.createElement(
 	                'h2',
 	                null,
 	                'Case sensitive'
 	            ),
-	            React.createElement(HiText, { ref: 'hi2', text: html, hi: this.state.hi1, 'case-sensitive': true }),
+	            React.createElement(
+	                HiText,
+	                { ref: 'hi2', hi: this.state.hi1, 'case-sensitive': true },
+	                html
+	            ),
 	            React.createElement(
 	                'h2',
 	                null,
 	                'With Async'
 	            ),
-	            React.createElement(HiText, { ref: 'hi3', text: html, hi: this.state.async })
+	            React.createElement(
+	                HiText,
+	                { ref: 'hi3', hi: this.state.async },
+	                html
+	            )
 	        );
 	    }
 	});
@@ -311,10 +323,7 @@
 					},
 
 					render: function render() {
-						return(
-							/*<span dangerouslySetInnerHTML={{__html: this.props.html}}>*/
-							React.createElement('span', null, this.props.text)
-						);
+						return React.createElement('span', null, this.props.children);
 					}
 				});
 

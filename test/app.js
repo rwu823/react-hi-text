@@ -30,7 +30,7 @@ var App = React.createClass({
     },
     render(){
         var html = `
-            <h1>JavaScript</h1> (/ˈdʒɑːvəˌskrɪpt/[5]) is a high level, dynamic, untyped, and interpreted programming language.[6]
+            JavaScript (/ˈdʒɑːvəˌskrɪpt/[5]) is a high level, dynamic, untyped, and interpreted programming language.[6]
             It has been standardized in the ECMAScript language specification.
         `
 
@@ -40,11 +40,17 @@ var App = React.createClass({
             <div id="app">
                 <h1>HiText testing</h1>
                 <h2>basic</h2>
-                <HiText ref="hi1" text={html} hi={this.state.hi1} />
+                <HiText ref="hi1" hi={this.state.hi1}>
+                    {html}
+                </HiText>
                 <h2>Case sensitive</h2>
-                <HiText ref="hi2" text={html} hi={this.state.hi1} case-sensitive />
+                <HiText ref="hi2" hi={this.state.hi1} case-sensitive>
+                    {html}
+                </HiText>
                 <h2>With Async</h2>
-                <HiText ref="hi3" text={html} hi={this.state.async} />
+                <HiText ref="hi3" hi={this.state.async}>
+                    {html}
+                </HiText>
             </div>
         )
     }

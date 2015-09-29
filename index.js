@@ -128,9 +128,8 @@ var HiText = React.createClass({
 
     render (){
         return (
-            /*<span dangerouslySetInnerHTML={{__html: this.props.html}}>*/
             <span>
-                {this.props.text}
+                {this.props.children}
             </span>
         )
     }

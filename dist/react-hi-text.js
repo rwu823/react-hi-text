@@ -184,13 +184,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    render: function render() {
-	        return(
-	            /*<span dangerouslySetInnerHTML={{__html: this.props.html}}>*/
-	            React.createElement(
-	                'span',
-	                null,
-	                this.props.text
-	            )
+	        return React.createElement(
+	            'span',
+	            null,
+	            this.props.children
 	        );
 	    }
 	});
