@@ -19,13 +19,14 @@ var Person = React.createClass({
 var App = React.createClass({
     getInitialState(){
         return {
-            hi1: 'ja'
+            hi1: 'a'
         }
     },
 
     componentDidMount(){
         setTimeout(()=>{
             this.setState({async: 'ja'})
+            this.refs.hi1.clean()
         }, 2000)
     },
     render(){

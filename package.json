@@ -1,6 +1,6 @@
 {
   "name": "react-hi-text",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React text highlight component",
   "main": "index.js",
   "scripts": {

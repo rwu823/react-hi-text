@@ -108,19 +108,31 @@ var HiText = React.createClass({
         return this
     },
 
+    _flatten(node){
+        var _this = this
+        for (var i = 0, children = node.childNodes, nodeCount = children.length; i < nodeCount; i++) {
+            var child = children[i]
+            if (child.nodeType == 1) {
+                _this._flatten(child)
+            }else if(child.nodeType === 3){
+                var next = child.nextSibling
+                var combined_text = child.data + next.data
+                var new_node = node.ownerDocument.createTextNode(combined_text)
+                node.insertBefore(new_node, child)
+                node.removeChild(child)
+                node.removeChild(next)
+                i--
+                nodeCount--
+            }
+        }
+    },
     clean (){
         var spans = this.el.querySelectorAll('.' + this.props.className);
 
         Array.prototype.forEach.call(spans, function (span) {
-            var tn = span.firstChild
-            var next = span.nextSibling
-            span.parentNode.replaceChild(tn, span)
-
-            if(next && next.nodeType === 3){
-                next.data = tn.data + next.data
-                tn.parentNode.removeChild(tn)
-            }
+            span.parentNode.replaceChild(span.firstChild, span)
         })
+        this._flatten(this.el)
 
         return this;
     },

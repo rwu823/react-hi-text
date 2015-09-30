@@ -76,7 +76,7 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            hi1: 'ja'
+	            hi1: 'a'
 	        };
 	    },
 
@@ -85,6 +85,7 @@
 
 	        setTimeout(function () {
 	            _this.setState({ async: 'ja' });
+	            _this.refs.hi1.clean();
 	        }, 2000);
 	    },
 	    render: function render() {
@@ -304,13 +305,31 @@
 						return this;
 					},
 
+					_flatten: function _flatten(node) {
+						var _this = this;
+						for (var i = 0, children = node.childNodes, nodeCount = children.length; i < nodeCount; i++) {
+							var child = children[i];
+							if (child.nodeType == 1) {
+								_this._flatten(child);
+							} else if (child.nodeType === 3) {
+								var next = child.nextSibling;
+								var combined_text = child.data + next.data;
+								var new_node = node.ownerDocument.createTextNode(combined_text);
+								node.insertBefore(new_node, child);
+								node.removeChild(child);
+								node.removeChild(next);
+								i--;
+								nodeCount--;
+							}
+						}
+					},
 					clean: function clean() {
 						var spans = this.el.querySelectorAll('.' + this.props.className);
 
 						Array.prototype.forEach.call(spans, function (span) {
-							var text = document.createTextNode(span.textContent);
-							span.parentNode.replaceChild(text, span);
+							span.parentNode.replaceChild(span.firstChild, span);
 						});
+						this._flatten(this.el);
 
 						return this;
 					},
