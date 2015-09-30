@@ -116,13 +116,15 @@ var HiText = React.createClass({
                 _this._flatten(child)
             }else if(child.nodeType === 3){
                 var next = child.nextSibling
-                var combined_text = child.data + next.data
-                var new_node = node.ownerDocument.createTextNode(combined_text)
-                node.insertBefore(new_node, child)
-                node.removeChild(child)
-                node.removeChild(next)
-                i--
-                nodeCount--
+                if(next && next.nodeType === 3 ){
+                    var combined_text = child.data + next.data
+                    var new_node = node.ownerDocument.createTextNode(combined_text)
+                    node.insertBefore(new_node, child)
+                    node.removeChild(child)
+                    node.removeChild(next)
+                    i--
+                    nodeCount--
+                }
             }
         }
     },
