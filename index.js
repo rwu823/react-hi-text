@@ -109,14 +109,20 @@ var HiText = React.createClass({
     },
 
     clean (){
-        var spans = this.el.querySelectorAll(`.${this.props.className}`)
+        var spans = this.el.querySelectorAll('.' + this.props.className);
 
-        Array.prototype.forEach.call(spans, (span)=>{
-            var text = document.createTextNode(span.textContent)
-            span.parentNode.replaceChild(text, span)
+        Array.prototype.forEach.call(spans, function (span) {
+            var tn = span.firstChild
+            var next = span.nextSibling
+            span.parentNode.replaceChild(tn, span)
+
+            if(next && next.nodeType === 3){
+                next.data = tn.data + next.data
+                tn.parentNode.removeChild(tn)
+            }
         })
 
-        return this
+        return this;
     },
 
     componentDidUpdate(){
