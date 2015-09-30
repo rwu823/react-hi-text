@@ -240,23 +240,14 @@
 						return {
 							className: 'highlight',
 							'case-sensitive': false,
-							hi: '',
-							text: ''
+							hi: ''
 						};
 					},
 					componentDidMount: function componentDidMount() {
 						this.el = this.getDOMNode();
-						//debugger
-						//this._html = this.el.innerHTML
-						this._html = this.el.textContent;
+						this._html = this.el.innerHTML;
 
 						this.setHighlight(this.props.hi, this.props['case-sensitive']);
-					},
-
-					shouldComponentUpdate: function shouldComponentUpdate(newProps) {
-						this._html = newProps.html;
-
-						return true;
 					},
 
 					setHighlight: function setHighlight(word, caseSens) {
@@ -314,7 +305,13 @@
 					},
 
 					clean: function clean() {
-						this.el.innerHTML = this._html;
+						var spans = this.el.querySelectorAll('.' + this.props.className);
+
+						Array.prototype.forEach.call(spans, function (span) {
+							var text = document.createTextNode(span.textContent);
+							span.parentNode.replaceChild(text, span);
+						});
+
 						return this;
 					},
 

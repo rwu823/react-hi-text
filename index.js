@@ -37,22 +37,13 @@ var HiText = React.createClass({
             className: 'highlight',
             'case-sensitive': false,
             hi: '',
-            text: ''
         }
     },
     componentDidMount (){
         this.el = this.getDOMNode()
-        //debugger
-        //this._html = this.el.innerHTML
-        this._html = this.el.textContent
+        this._html = this.el.innerHTML
 
         this.setHighlight(this.props.hi, this.props['case-sensitive'])
-    },
-
-    shouldComponentUpdate(newProps){
-        this._html = newProps.html
-
-        return true
     },
 
     setHighlight (word, caseSens){
@@ -118,7 +109,13 @@ var HiText = React.createClass({
     },
 
     clean (){
-        this.el.innerHTML = this._html
+        var spans = this.el.querySelectorAll(`.${this.props.className}`)
+
+        Array.prototype.forEach.call(spans, (span)=>{
+            var text = document.createTextNode(span.textContent)
+            span.parentNode.replaceChild(text, span)
+        })
+
         return this
     },
 

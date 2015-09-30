@@ -1,5 +1,7 @@
 # React text highlight component
 
+[Live Demo](https://rwu823/github.io/react-hi-text)
+
 ## Installation
 ```sh
 npm install react-hi-text --save-dev
