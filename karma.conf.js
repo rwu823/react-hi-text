@@ -16,7 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'node_modules/react/dist/react.js',
-        './dist/react-hi-text.js',
+        //'./dist/react-hi-text.js',
+        './index.js',
         'test/index.js'
     ],
 
@@ -30,17 +31,18 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         'test/index.js': ['babel', 'coverage'],
-        'dist/react-hi-text.js': ['coverage']
+        'index.js': ['webpack']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'coverage', 'coveralls'],
+    reporters: ['spec', 'coverage'],
 
     plugins: [
       'karma-babel-preprocessor',
+      'karma-webpack',
       'karma-coverage',
       'karma-coveralls',
       'karma-chai',
@@ -50,6 +52,25 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-firefox-launcher',
     ],
+    webpack: {
+      output: {
+        library: 'ReactHiText',
+        libraryTarget: 'umd'
+      },
+      module: {
+        preLoaders: [
+          {
+            test: /(\.jsx?)$/,
+            // exclude this dirs from coverage
+            exclude: /(test|node_modules|bower_components)\//,
+            loader: 'isparta-instrumenter-loader'
+          },
+        ],
+        loaders: [
+
+        ]
+      }
+    },
 
     coverageReporter: {
       type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
