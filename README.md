@@ -1,5 +1,7 @@
 # React text highlight component
 [![Build Status](https://travis-ci.org/rwu823/react-hi-text.svg?branch=master)](https://travis-ci.org/rwu823/react-hi-text)
+[![Coverage Status](https://coveralls.io/repos/rwu823/react-hi-text/badge.svg?branch=master&service=github)](https://coveralls.io/github/rwu823/react-hi-text?branch=master)
+
 
 ## Live Demo
 [Demo](https://rwu823.github.io/react-hi-text)
