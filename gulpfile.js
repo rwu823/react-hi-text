@@ -1,3 +1,5 @@
+'use strict'
+
 var gu = require('gulp')
 var webpack = require('webpack')
 var rename = require('gulp-rename')
@@ -43,6 +45,16 @@ var buildConf = {
 gu
     .task('dev', function (){
         pack(_.merge(buildConf, {watch: true}))
+    })
+    .task('ava', function (){
+        var ava = require('gulp-ava')
+        var files = ['test/index.js']
+
+        gu.src(files).pipe(ava())
+
+        gu.watch(files).on('change', (f)=>{
+            gu.src(f.path).pipe(ava())
+        })
     })
     .task('test', function (){
         pack({

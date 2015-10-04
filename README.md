@@ -1,6 +1,8 @@
 # React text highlight component
+![](https://travis-ci.org/rwu823/react-hi-text.svg)
 
-[Live Demo](https://rwu823.github.io/react-hi-text)
+## Live Demo
+[Demo](https://rwu823.github.io/react-hi-text)
 
 ## Installation
 ```sh
