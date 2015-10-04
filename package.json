@@ -6,8 +6,7 @@
   "scripts": {
     "test": "karma start --single-run --browsers Firefox",
     "test.dev": "karma start",
-    "coveralls": "cat coverage/lcov.coveralls | coveralls && echo publish to coveralls done;",
-    "test.coveralls": "cat coverage/lcov.coveralls | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat coverage/lcov.coveralls | coveralls && echo publish to coveralls done;"
   },
   "author": "Rocky Wu <rocky823@gmail.com>",
   "license": "MIT",
