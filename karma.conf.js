@@ -73,12 +73,15 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
-      dir: 'coverage/'
-    },
-
-    coverallsReporter: {
-      repoToken: 'ZdPzOJnP7AQgvpXanYDMEQQ4EUKnxoBfh'
+      dir: 'coverage/',
+      reporters: [
+        {
+          type: 'html', subdir: 'html'
+        },
+        {
+          type: 'lcovonly', subdir: '.', file: 'lcov.coveralls'
+        }
+      ]
     },
 
     // web server port
