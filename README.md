@@ -1,5 +1,5 @@
 # React text highlight component
-[![Build Status](https://travis-ci.org/rwu823/react-hi-text.svg?branch=v0.1.5)](https://travis-ci.org/rwu823/react-hi-text)
+[![Build Status](https://travis-ci.org/rwu823/react-hi-text.svg?branch=master)](https://travis-ci.org/rwu823/react-hi-text)
 
 ## Live Demo
 [Demo](https://rwu823.github.io/react-hi-text)
