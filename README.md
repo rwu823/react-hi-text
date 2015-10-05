@@ -8,7 +8,7 @@
 
 ## Installation
 ```sh
-npm install react-hi-text --save-dev
+npm install react-hi-text --save
 ```
 
 ## Examples
