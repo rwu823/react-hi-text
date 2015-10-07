@@ -1,35 +1,37 @@
 'use strict'
-
-var escapeRegExp = require('lodash/string/escapeRegExp')
-
-var regexpEscapes = {
-    '0': 'x30', '1': 'x31', '2': 'x32', '3': 'x33', '4': 'x34',
-    '5': 'x35', '6': 'x36', '7': 'x37', '8': 'x38', '9': 'x39',
-    'A': 'x41', 'B': 'x42', 'C': 'x43', 'D': 'x44', 'E': 'x45', 'F': 'x46',
-    'a': 'x61', 'b': 'x62', 'c': 'x63', 'd': 'x64', 'e': 'x65', 'f': 'x66',
-    'n': 'x6e', 'r': 'x72', 't': 'x74', 'u': 'x75', 'v': 'x76', 'x': 'x78'
-};
-
-/** Used to escape characters for inclusion in compiled string literals. */
-var stringEscapes = {
-    '\\': '\\',
-    "'": "'",
-    '\n': 'n',
-    '\r': 'r',
-    '\u2028': 'u2028',
-    '\u2029': 'u2029'
-}
-
-var re = ''
-
-for(var k in stringEscapes){
-    re += '\\\\' + stringEscapes[k] + '|'
-}
-for(var k in regexpEscapes){
-    re += '\\\\' + regexpEscapes[k] + '|'
-}
-
-var tagSrc = '(<\/?[^>]+>)?'
+/** TODO
+ * code for try fix cross tag issue
+ */
+//var escapeRegExp = require('lodash/string/escapeRegExp')
+//
+//var regexpEscapes = {
+//    '0': 'x30', '1': 'x31', '2': 'x32', '3': 'x33', '4': 'x34',
+//    '5': 'x35', '6': 'x36', '7': 'x37', '8': 'x38', '9': 'x39',
+//    'A': 'x41', 'B': 'x42', 'C': 'x43', 'D': 'x44', 'E': 'x45', 'F': 'x46',
+//    'a': 'x61', 'b': 'x62', 'c': 'x63', 'd': 'x64', 'e': 'x65', 'f': 'x66',
+//    'n': 'x6e', 'r': 'x72', 't': 'x74', 'u': 'x75', 'v': 'x76', 'x': 'x78'
+//};
+//
+///** Used to escape characters for inclusion in compiled string literals. */
+//var stringEscapes = {
+//    '\\': '\\',
+//    "'": "'",
+//    '\n': 'n',
+//    '\r': 'r',
+//    '\u2028': 'u2028',
+//    '\u2029': 'u2029'
+//}
+//
+//var re = ''
+//
+//for(var k in stringEscapes){
+//    re += '\\\\' + stringEscapes[k] + '|'
+//}
+//for(var k in regexpEscapes){
+//    re += '\\\\' + regexpEscapes[k] + '|'
+//}
+//
+//var tagSrc = '(<\/?[^>]+>)?'
 
 var HiText = React.createClass({
     getDefaultProps (){
@@ -112,7 +114,7 @@ var HiText = React.createClass({
         var _this = this
         for (var i = 0, children = node.childNodes, nodeCount = children.length; i < nodeCount; i++) {
             var child = children[i]
-            if (child.nodeType == 1) {
+            if (child.nodeType === 1) {
                 _this._flatten(child)
             }else if(child.nodeType === 3){
                 var next = child.nextSibling
@@ -135,7 +137,7 @@ var HiText = React.createClass({
             span.parentNode.replaceChild(span.firstChild, span)
         })
         this._flatten(this.el)
-
+        this.hasMatched = false
         return this;
     },
 

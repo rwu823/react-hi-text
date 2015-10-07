@@ -52,14 +52,29 @@ output:
 ### hi
 Set highlight with a word.
 
-
 ### case-sensitive
-Match word with case sensitive. default is `false`
-
+Match word with case sensitive. default is `false`.
 
 ### className
-set class name. default  is `highlight`
+set class name. default  is `highlight`.
 
 ## Method
 ### clean()
-Clear all highlights
+Clear all highlights.
+
+### hasMatched  
+Check whether or not match any words.
+
+## Known issue
+Cross tag highlight issue:
+
+e.g.
+```html
+<HiText hi="javascript">
+	<b>Java</b>Script
+</HiText>
+```
+expect output:
+```html
+<span class="highlight"><b>Java</b>Script</span>
+```
