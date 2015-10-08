@@ -55,8 +55,6 @@ var HiText = React.createClass({
         var className = this.props.className
         var _this = this
 
-        _this.hasMatched = false
-
         if(word > 1){
 
         }else{
@@ -141,7 +139,7 @@ var HiText = React.createClass({
         return this;
     },
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
         this.setHighlight(this.props.hi, this.props['case-sensitive'])
     },
 

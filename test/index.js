@@ -126,6 +126,11 @@ describe('#React HiText', function (){
 
         beforeEach(()=>{
             var App = React.createClass({
+                getInitialState(){
+                    return {
+                        hi: 'test'
+                    }
+                },
 
                 componentDidMount(){
 
@@ -148,6 +153,11 @@ describe('#React HiText', function (){
                                     Test with cross tag <b>Java</b>Script!!!
                                 </HiText>
                             </div>
+                            <div id="test4">
+                                <HiText ref="hi4" hi={this.state.hi}>
+                                    Test `hasMatched` for component updated with same word
+                                </HiText>
+                            </div>
                         </div>
                     )
                 }
@@ -162,6 +172,12 @@ describe('#React HiText', function (){
 
         it('Test with `hasMatched`', function (){
             ass.equal(AppVdom.refs.hi1.hasMatched, true)
+        })
+
+        it('Test `hasMatched` for component updated with same word', function (){
+            ass.equal(true, AppVdom.refs.hi4.hasMatched)
+            AppVdom.setState({hi: 'test'})
+            ass.equal(true, AppVdom.refs.hi1.hasMatched)
         })
 
         it('Test with empty word', function (){

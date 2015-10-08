@@ -120,8 +120,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var className = this.props.className;
 	        var _this = this;
 
-	        _this.hasMatched = false;
-
 	        if (word > 1) {} else {}
 
 	        var highlight = function highlight(rootNode) {
@@ -198,7 +196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this;
 	    },
 
-	    componentDidUpdate: function componentDidUpdate() {
+	    componentDidUpdate: function componentDidUpdate(prevProps) {
 	        this.setHighlight(this.props.hi, this.props['case-sensitive']);
 	    },
 
